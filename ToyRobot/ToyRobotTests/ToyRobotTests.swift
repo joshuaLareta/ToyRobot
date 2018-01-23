@@ -27,7 +27,38 @@ class ToyRobotTests: XCTestCase {
         manager = nil
     }
     
-    func testValidExample() {
+    func testGivenExampleA() {
+        let inputList: [String] = ["Place 0,0,North", "Move","Report"]
+        for input in inputList {
+            manager?.executeCommand(input, { (response, error) in
+                if response?.shouldBeDisplayed == true {
+                    XCTAssert(response?.responseString == "current position of the robot is at\n0, 1, NORTH")
+                }
+            })
+        }
+    }
+    func testGivenExampleB() {
+        let inputList: [String] = ["Place 0,0,North", "left","Report"]
+        for input in inputList {
+            manager?.executeCommand(input, { (response, error) in
+                if response?.shouldBeDisplayed == true {
+                    XCTAssert(response?.responseString == "current position of the robot is at\n0, 0, WEST")
+                }
+            })
+        }
+    }
+    
+    func testAdditionalExample1() {
+        let inputList: [String] = ["Place 0,0,East", "Move","Move","Left","Move","Move","Left","Left","report"]
+        for input in inputList {
+            manager?.executeCommand(input, { (response, error) in
+                if response?.shouldBeDisplayed == true {
+                    XCTAssert(response?.responseString == "current position of the robot is at\n2, 2, SOUTH")
+                }
+            })
+        }
+    }
+    func testGivenExampleC() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let inputList: [String] = ["Place 1,2,East", "Move","Move","left","Move","Report"]
