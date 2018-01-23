@@ -45,20 +45,23 @@ class RootManager: NSObject {
     
     private func validateExecutableCommand (command cmd: ExecutableCommand) -> Error?{
         // check if the command is a move
+        if cmd.type == .Invalid {
+            return ToyRobotError.error(withCode: .badRequest)
+        }
         if robot?.hasBeenPlaced == true || cmd.type == .Place{
             if cmd.type == .Move || cmd.type == .Place{
                 // lets check the robots location
                 if let newLocation = cmd.type == .Place ? cmd.point : robot?.simulateMovement(forCommand: cmd){
                     // has a valid location
                     if currentTable?.isWithInThisTable(newLocation) == false {
-                        return ToyRobotError.error(withCode: 400, andLocalizedErrorMessage: NSLocalizedString("Command will put the robot out of bounds.\n Please try again", comment: "Out of bounds error"))
+                        return ToyRobotError.error(withCode: .outOfBound)
                     }
                 }
             }
             return nil
         }
         
-        return ToyRobotError.error(withCode: 400, andLocalizedErrorMessage: NSLocalizedString("Robot not yet placed", comment: "no proper move as robot is not yet initialized"))
+        return ToyRobotError.error(withCode: .notPlaced)
     }
     
     //MARK: Public functions
@@ -73,36 +76,30 @@ class RootManager: NSObject {
         if let commandString = command?.trimmingCharacters(in: .whitespacesAndNewlines), commandString.isEmpty == false {
             // process the commandString if its a valid command for the robot
             let cmd = commands.process(command: commandString)
-            
-            if cmd.type != Command.Invalid {
-                if cmd.type == .Place || robot == nil {
-                    add(aRobot: Robot()) // just initialize a robot if it not yet there
-                }
-
-                // cmd is a valid command need to check if it implemented with the robot's current location it will not be out of bounds
-                // command is not invalid lets check if its within the bound of the table
-                error =  validateExecutableCommand(command: cmd)
-                if error == nil {
-                    if let robotResponse = self.robot?.execute(command: cmd) {
-                        // if it has a response it means a report was issued and need to be handled properly
-                        if let f = robot?.currentDirection?.rawValue {
-                            let processedString = "current position of the robot is at\n" + String(Int(robotResponse.x)) + ", " + String(Int(robotResponse.y)) + ", " + String(f)
-                            let stringResponse = NSLocalizedString(processedString, comment: "the report response")
-                            response = ManagerResponse(shouldBeDisplayed: true, responseString: stringResponse, isValid: true)
-                        }
-                        
-                    } else {
-                        response = ManagerResponse(shouldBeDisplayed: false, responseString: nil, isValid: true)
-                    }
-                    // if there is no error proceed with the robot command
-                }
-            }else {
-                error = ToyRobotError.error(withCode: 400, andLocalizedErrorMessage: NSLocalizedString("Invalid Command.\n Please Try again", comment: "The input command was invalid error"))
+            if cmd.type == .Place || robot == nil {
+                add(aRobot: Robot()) // just initialize a robot if it not yet there
             }
             
+            // cmd is a valid command need to check if it implemented with the robot's current location it will not be out of bounds
+            // command is not invalid lets check if its within the bound of the table
+            error =  validateExecutableCommand(command: cmd)
+            if error == nil {
+                if let robotResponse = self.robot?.execute(command: cmd) {
+                    // if it has a response it means a report was issued and need to be handled properly
+                    if let f = robot?.currentDirection?.rawValue {
+                        let processedString = "current position of the robot is at\n" + String(Int(robotResponse.x)) + ", " + String(Int(robotResponse.y)) + ", " + String(f)
+                        let stringResponse = NSLocalizedString(processedString, comment: "the report response")
+                        response = ManagerResponse(shouldBeDisplayed: true, responseString: stringResponse, isValid: true)
+                    }
+                    
+                } else {
+                    response = ManagerResponse(shouldBeDisplayed: false, responseString: nil, isValid: true)
+                }
+                // if there is no error proceed with the robot command
+            }
         } else {
             // no command after removing whitespace and new line, generate an error
-            error = ToyRobotError.error(withCode: 404, andLocalizedErrorMessage: NSLocalizedString("No commands found", comment: "error description"))
+            error = ToyRobotError.error(withCode: .noCommands)
         }
         
         // check if completion block is nil, if it is not continue to call it
