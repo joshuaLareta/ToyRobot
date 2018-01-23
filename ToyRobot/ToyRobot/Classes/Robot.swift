@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Robot: NSObject, CommandProtocol {
+class Robot: NSObject {
     var location: CGPoint? = nil
     var hasBeenPlaced: Bool = false
     var command: ExecutableCommand?
@@ -19,10 +19,8 @@ class Robot: NSObject, CommandProtocol {
         switch cmd.type {
         case .Move:
             move()
-        case .Left:
-            left()
-        case .Right:
-            right()
+        case .Left, .Right:
+              changeDirection()
         case .Report:
             return report()
         case .Place:
@@ -37,12 +35,10 @@ class Robot: NSObject, CommandProtocol {
         return location
     }
     
-    func left() {
-        currentDirection = changeDirection()
+    func changeDirection() {
+        currentDirection = changingDirection()
     }
-    func right() {
-         currentDirection = changeDirection()
-    }
+    
     func move() {
         location = newLocationAfterImplementingMovement()
     }
@@ -57,8 +53,8 @@ class Robot: NSObject, CommandProtocol {
         return newLocationAfterImplementingMovement()
     }
     
-
-    private func changeDirection() -> Direction? {
+    // changing the direction of the robot
+    private func changingDirection() -> Direction? {
         var newDirection: Direction?
         if let current = currentDirection {
             switch current {
@@ -91,6 +87,7 @@ class Robot: NSObject, CommandProtocol {
         return newDirection
     }
     
+    // moving the location to a new position based on the current direction
     private func newLocationAfterImplementingMovement() -> CGPoint?{
         
         if let direction = currentDirection {

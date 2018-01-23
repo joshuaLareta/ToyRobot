@@ -46,12 +46,12 @@ class RootManager: NSObject {
     private func validateExecutableCommand (command cmd: ExecutableCommand) -> Error?{
         // check if the command is a move
         if robot?.hasBeenPlaced == true || cmd.type == .Place{
-            if cmd.type == .Move {
+            if cmd.type == .Move || cmd.type == .Place{
                 // lets check the robots location
-                if let newLocation = robot?.simulateMovement(forCommand: cmd){
+                if let newLocation = cmd.type == .Place ? cmd.point : robot?.simulateMovement(forCommand: cmd){
                     // has a valid location
                     if currentTable?.isWithInThisTable(newLocation) == false {
-                        return ToyRobotError.error(withCode: 400, andLocalizedErrorMessage: NSLocalizedString("Move command will put the robot out of bounds.\n Please try again", comment: "Out of bounds error"))
+                        return ToyRobotError.error(withCode: 400, andLocalizedErrorMessage: NSLocalizedString("Command will put the robot out of bounds.\n Please try again", comment: "Out of bounds error"))
                     }
                 }
             }
@@ -85,8 +85,12 @@ class RootManager: NSObject {
                 if error == nil {
                     if let robotResponse = self.robot?.execute(command: cmd) {
                         // if it has a response it means a report was issued and need to be handled properly
-                        let stringResponse = NSLocalizedString("current position of th robot is at \(robotResponse.x,robotResponse.y, robot?.currentDirection?.rawValue)", comment: "the report response")
-                        response = ManagerResponse(shouldBeDisplayed: true, responseString: stringResponse, isValid: true)
+                        if let f = robot?.currentDirection?.rawValue {
+                            let processedString = "current position of the robot is at\n" + String(Int(robotResponse.x)) + ", " + String(Int(robotResponse.y)) + ", " + String(f)
+                            let stringResponse = NSLocalizedString(processedString, comment: "the report response")
+                            response = ManagerResponse(shouldBeDisplayed: true, responseString: stringResponse, isValid: true)
+                        }
+                        
                     } else {
                         response = ManagerResponse(shouldBeDisplayed: false, responseString: nil, isValid: true)
                     }

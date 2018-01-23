@@ -9,15 +9,6 @@
 import Foundation
 import UIKit
 
-// Methods needed for conforming to the protocol
-protocol CommandProtocol {
-    func move()
-    func left()
-    func right()
-    func place()
-    func report() -> CGPoint?
-}
-
 // Valid commands
 enum Command {
     case Move
@@ -68,7 +59,6 @@ struct Commands {
                                 // lets check the direction
                                 let initialDirection = Direction(rawValue: f.uppercased())
                                 guard initialDirection != nil else {
-                                    print ("invalid direction")
                                     return ExecutableCommand(type: Command.Invalid, point: nil, f:nil)
                                 }
                                 // return the initial place
