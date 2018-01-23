@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		425681342017260800951043 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681332017260800951043 /* AppDelegate.swift */; };
-		425681362017260800951043 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681352017260800951043 /* ViewController.swift */; };
-		425681392017260800951043 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425681372017260800951043 /* Main.storyboard */; };
+		425681362017260800951043 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681352017260800951043 /* RootViewController.swift */; };
 		4256813B2017260800951043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4256813A2017260800951043 /* Assets.xcassets */; };
 		4256813E2017260800951043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4256813C2017260800951043 /* LaunchScreen.storyboard */; };
 		425681492017260800951043 /* ToyRobotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681482017260800951043 /* ToyRobotTests.swift */; };
@@ -28,8 +27,7 @@
 /* Begin PBXFileReference section */
 		425681302017260800951043 /* ToyRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToyRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425681332017260800951043 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		425681352017260800951043 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		425681382017260800951043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		425681352017260800951043 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		4256813A2017260800951043 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4256813D2017260800951043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4256813F2017260800951043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,8 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				425681332017260800951043 /* AppDelegate.swift */,
-				425681352017260800951043 /* ViewController.swift */,
-				425681372017260800951043 /* Main.storyboard */,
+				425681352017260800951043 /* RootViewController.swift */,
 				4256813A2017260800951043 /* Assets.xcassets */,
 				4256813C2017260800951043 /* LaunchScreen.storyboard */,
 				4256813F2017260800951043 /* Info.plist */,
@@ -181,7 +178,6 @@
 			files = (
 				4256813E2017260800951043 /* LaunchScreen.storyboard in Resources */,
 				4256813B2017260800951043 /* Assets.xcassets in Resources */,
-				425681392017260800951043 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				425681362017260800951043 /* ViewController.swift in Sources */,
+				425681362017260800951043 /* RootViewController.swift in Sources */,
 				425681342017260800951043 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,14 +219,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		425681372017260800951043 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				425681382017260800951043 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4256813C2017260800951043 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

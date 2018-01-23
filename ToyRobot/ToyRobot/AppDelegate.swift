@@ -12,10 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var rootViewController: RootViewController = {
+        let tempRootViewController = RootViewController()
+        return tempRootViewController
+    }()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds) // init the window of the application
+        window?.rootViewController = rootViewController // assign the rootViewController
+        window?.makeKeyAndVisible()
         return true
     }
 
