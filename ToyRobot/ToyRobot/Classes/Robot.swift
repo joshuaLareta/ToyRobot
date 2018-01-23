@@ -38,9 +38,10 @@ class Robot: NSObject, CommandProtocol {
     }
     
     func left() {
+        currentDirection = changeDirection()
     }
     func right() {
-        
+         currentDirection = changeDirection()
     }
     func move() {
         location = newLocationAfterImplementingMovement()
@@ -51,7 +52,46 @@ class Robot: NSObject, CommandProtocol {
         hasBeenPlaced = true
     }
     
-    func newLocationAfterImplementingMovement() -> CGPoint?{
+    // this function only simulates the movement of the given command and will robot will not move on its current place
+    func simulateMovement (forCommand cmd: ExecutableCommand) -> CGPoint? {
+        return newLocationAfterImplementingMovement()
+    }
+    
+
+    private func changeDirection() -> Direction? {
+        var newDirection: Direction?
+        if let current = currentDirection {
+            switch current {
+            case .N:
+                if (command?.type == .Left) {
+                    newDirection = .W
+                } else {
+                    newDirection = .E
+                }
+            case .W:
+                if (command?.type == .Left) {
+                    newDirection = .S
+                } else {
+                    newDirection = .N
+                }
+            case .S:
+                if (command?.type == .Left) {
+                    newDirection = .E
+                } else {
+                    newDirection = .W
+                }
+            case .E:
+                if (command?.type == .Left) {
+                    newDirection = .N
+                } else {
+                    newDirection = .S
+                }
+            }
+        }
+        return newDirection
+    }
+    
+    private func newLocationAfterImplementingMovement() -> CGPoint?{
         
         if let direction = currentDirection {
             var x = 0, y = 0
@@ -79,9 +119,4 @@ class Robot: NSObject, CommandProtocol {
         return nil
     }
     
-    // this function only simulates the movement of the given command and will robot will not move on its current place
-    func simulateMovement (forCommand cmd: ExecutableCommand) -> CGPoint? {
-        return newLocationAfterImplementingMovement()
-    }
-
 }
