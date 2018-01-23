@@ -18,6 +18,10 @@
 		4256815A2017335000951043 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681582017335000951043 /* Robot.swift */; };
 		4256815C2017336800951043 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256815B2017336800951043 /* Table.swift */; };
 		4256815D2017336800951043 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256815B2017336800951043 /* Table.swift */; };
+		4256815F2017491100951043 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256815E2017491100951043 /* Commands.swift */; };
+		425681602017491100951043 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256815E2017491100951043 /* Commands.swift */; };
+		4256816220176B1600951043 /* ToyRobotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256816120176B1600951043 /* ToyRobotError.swift */; };
+		4256816320176B1600951043 /* ToyRobotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256816120176B1600951043 /* ToyRobotError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,8 @@
 		425681552017330600951043 /* RootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootManager.swift; sourceTree = "<group>"; };
 		425681582017335000951043 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		4256815B2017336800951043 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		4256815E2017491100951043 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
+		4256816120176B1600951043 /* ToyRobotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToyRobotError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,8 @@
 			children = (
 				425681582017335000951043 /* Robot.swift */,
 				4256815B2017336800951043 /* Table.swift */,
+				4256815E2017491100951043 /* Commands.swift */,
+				4256816120176B1600951043 /* ToyRobotError.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -224,10 +232,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				425681592017335000951043 /* Robot.swift in Sources */,
+				4256815F2017491100951043 /* Commands.swift in Sources */,
 				4256815C2017336800951043 /* Table.swift in Sources */,
 				425681362017260800951043 /* RootViewController.swift in Sources */,
 				425681342017260800951043 /* AppDelegate.swift in Sources */,
 				425681562017330600951043 /* RootManager.swift in Sources */,
+				4256816220176B1600951043 /* ToyRobotError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +247,9 @@
 			files = (
 				425681492017260800951043 /* ToyRobotTests.swift in Sources */,
 				4256815A2017335000951043 /* Robot.swift in Sources */,
+				4256816320176B1600951043 /* ToyRobotError.swift in Sources */,
 				4256815D2017336800951043 /* Table.swift in Sources */,
+				425681602017491100951043 /* Commands.swift in Sources */,
 				425681572017330600951043 /* RootManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
