@@ -12,6 +12,12 @@
 		4256813B2017260800951043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4256813A2017260800951043 /* Assets.xcassets */; };
 		4256813E2017260800951043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4256813C2017260800951043 /* LaunchScreen.storyboard */; };
 		425681492017260800951043 /* ToyRobotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681482017260800951043 /* ToyRobotTests.swift */; };
+		425681562017330600951043 /* RootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681552017330600951043 /* RootManager.swift */; };
+		425681572017330600951043 /* RootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681552017330600951043 /* RootManager.swift */; };
+		425681592017335000951043 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681582017335000951043 /* Robot.swift */; };
+		4256815A2017335000951043 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425681582017335000951043 /* Robot.swift */; };
+		4256815C2017336800951043 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256815B2017336800951043 /* Table.swift */; };
+		4256815D2017336800951043 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4256815B2017336800951043 /* Table.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,9 @@
 		425681442017260800951043 /* ToyRobotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToyRobotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		425681482017260800951043 /* ToyRobotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToyRobotTests.swift; sourceTree = "<group>"; };
 		4256814A2017260800951043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		425681552017330600951043 /* RootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootManager.swift; sourceTree = "<group>"; };
+		425681582017335000951043 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
+		4256815B2017336800951043 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +84,8 @@
 		425681322017260800951043 /* ToyRobot */ = {
 			isa = PBXGroup;
 			children = (
+				425681542017324F00951043 /* Classes */,
+				425681532017324200951043 /* Manager */,
 				425681332017260800951043 /* AppDelegate.swift */,
 				425681352017260800951043 /* RootViewController.swift */,
 				4256813A2017260800951043 /* Assets.xcassets */,
@@ -91,6 +102,23 @@
 				4256814A2017260800951043 /* Info.plist */,
 			);
 			path = ToyRobotTests;
+			sourceTree = "<group>";
+		};
+		425681532017324200951043 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				425681552017330600951043 /* RootManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		425681542017324F00951043 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				425681582017335000951043 /* Robot.swift */,
+				4256815B2017336800951043 /* Table.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,8 +223,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425681592017335000951043 /* Robot.swift in Sources */,
+				4256815C2017336800951043 /* Table.swift in Sources */,
 				425681362017260800951043 /* RootViewController.swift in Sources */,
 				425681342017260800951043 /* AppDelegate.swift in Sources */,
+				425681562017330600951043 /* RootManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +236,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				425681492017260800951043 /* ToyRobotTests.swift in Sources */,
+				4256815A2017335000951043 /* Robot.swift in Sources */,
+				4256815D2017336800951043 /* Table.swift in Sources */,
+				425681572017330600951043 /* RootManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
